@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2025-10-09T16:52:12.254Z",
+  "updatedAt": "2025-10-09T17:13:33.356Z",
   "prices": {
     "BNB": {
-      "priceInEth": 1232.7460884563263,
-      "priceInWei": "1232746088456326217728",
+      "priceInEth": 1242.277633048009,
+      "priceInWei": "1242277633048008982528",
       "error": null
     },
     "XBNB": {
-      "priceInEth": 1.2327460884563264,
-      "priceInWei": "1232746088456326400",
+      "priceInEth": 1.242277633048009,
+      "priceInWei": "1242277633048008960",
       "error": null
     },
     "B4NK": {
-      "priceInEth": 12.327460884563264,
-      "priceInWei": "12327460884563263488",
-      "error": null
+      "priceInEth": null,
+      "priceInWei": null,
+      "error": "missing revert data (action=\"call\", data=null, reason=null, transaction={ \"data\": \"0x0dfe1681\", \"to\": \"0x8562f33725b7cDA95B46fa079D18Ff8f7ABE2a5C\" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.15.0)"
     }
   }
 }
