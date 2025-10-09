@@ -1,0 +1,35 @@
+name: Update DexScreener Prices
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "*/10 * * * *"   # every 2 minutes
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # safer pushes (not detached)
+
+      - name: Setup Node (no npm install needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run price script
+        run: node dexscreenerProxy.mjs
+
+      # Optional: show the file before committing (helpful for debugging)
+      - name: List price file
+        run: ls -la price.json || true
+
+      - name: Commit and push price.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update price.json"
+          file_pattern: price.json
