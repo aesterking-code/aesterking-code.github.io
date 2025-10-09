@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2025-10-09T20:50:46.027Z",
+  "updatedAt": "2025-10-09T21:29:34.885Z",
   "prices": {
     "BNB": {
-      "priceInEth": 1245.8525633029813,
-      "priceInWei": "1245852563302981304320",
+      "priceInEth": 1250.7183010618364,
+      "priceInWei": "1250718301061836439552",
       "error": null
     },
     "XBNB": {
-      "priceInEth": 1.2458525633029813,
-      "priceInWei": "1245852563302981376",
-      "error": null
+      "priceInEth": null,
+      "priceInWei": null,
+      "error": "server response 502 Bad Gateway (request={  }, response={  }, error=null, info={ \"requestUrl\": \"https://polygon.therpc.io\", \"responseBody\": \"error code: 502\", \"responseStatus\": \"502 Bad Gateway\" }, code=SERVER_ERROR, version=6.15.0)"
     },
     "B4NK": {
       "priceInEth": null,
       "priceInWei": null,
-      "error": "missing revert data (action=\"call\", data=null, reason=null, transaction={ \"data\": \"0x0dfe1681\", \"to\": \"0x8562f33725b7cDA95B46fa079D18Ff8f7ABE2a5C\" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.15.0)"
+      "error": "server response 502 Bad Gateway (request={  }, response={  }, error=null, info={ \"requestUrl\": \"https://polygon.therpc.io\", \"responseBody\": \"error code: 502\", \"responseStatus\": \"502 Bad Gateway\" }, code=SERVER_ERROR, version=6.15.0)"
     }
   }
 }
