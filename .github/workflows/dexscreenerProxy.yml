@@ -3,7 +3,11 @@ name: Update DexScreener Prices
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "*/10 * * * *"   # every 2 minutes
+    - cron: "*/10 * * * *"   # every 10 minutes
+
+concurrency:
+  group: prices-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -14,7 +18,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # safer pushes (not detached)
+          fetch-depth: 0
+
+      - name: Sync with remote (rebase)
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+          git fetch origin "$BRANCH"
+          git pull --rebase --autostash origin "$BRANCH"
 
       - name: Setup Node (no npm install needed)
         uses: actions/setup-node@v4
@@ -24,12 +36,12 @@ jobs:
       - name: Run price script
         run: node dexscreenerProxy.mjs
 
-      # Optional: show the file before committing (helpful for debugging)
       - name: List price file
         run: ls -la price.json || true
 
       - name: Commit and push price.json
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "chore: update price.json"
           file_pattern: price.json
+          push_options: "--force-with-lease"
