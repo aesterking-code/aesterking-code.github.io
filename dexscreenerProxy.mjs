@@ -9,7 +9,7 @@ const BNB_PAIR_URL =
   "https://api.dexscreener.com/latest/dex/pairs/bsc/0x46b9217342CdC50c89FfA84A12Be45b2639eAf4A";
 
 // Polygon RPC
-const POLYGON_RPC = "https://polygon.therpc.io";
+const POLYGON_RPC = process.env.POLYGON_RPC || process.env.ALCHEMY_POLYGON_RPC;
 const CHAIN_ID = 137;
 
 // Wrapped POL on Polygon PoS
