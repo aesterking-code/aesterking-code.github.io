@@ -90,13 +90,13 @@ async function main() {
   let bnbUsd = null;
   try {
     bnbUsd = await getBnbUsdFromDexScreener(); // <-- USD
-    out.prices.BNB.priceInEth = Number(bnbUsd);             // number (USD)
-    out.prices.BNB.priceInWei = toFixedWei(bnbUsd).toString(); // 18-dec string (USD)
+    out.prices.BNB.priceInEth = Number(bnbUsd);                 // number (USD)
+    out.prices.BNB.priceInWei = toFixedWei(bnbUsd).toString();  // 18-dec string (USD)
   } catch (err) {
     out.prices.BNB.error = String(err?.message ?? err);
   }
 
-  // 2) Polygon tokens -> token price in POL, multiply by *BNB USD* (as you requested)
+  // 2) Polygon tokens -> token price in POL, multiply by *BNB USD* (as requested)
   if (bnbUsd !== null) {
     const provider = new ethers.JsonRpcProvider(POLYGON_RPC, CHAIN_ID);
 
@@ -119,14 +119,23 @@ async function main() {
       }
     }
   } else {
-    // if BNB failed, mark both as failed (since they depend on it per your requirement)
+    // if BNB failed, mark both as failed (since they depend on it)
     out.prices.XBNB.error = out.prices.XBNB.error ?? "BNB USD unavailable";
     out.prices.B4NK.error = out.prices.B4NK.error ?? "BNB USD unavailable";
   }
 
-  // Write single file (same structure)
+  // Always write current snapshot
   fs.writeFileSync("price.json", JSON.stringify(out, null, 2));
   console.log("💾 Wrote price.json");
+
+  // Write last-good only if *all* calls succeeded (no error fields)
+  const allGood = Object.values(out.prices).every((p) => p.error === null);
+  if (allGood) {
+    fs.writeFileSync("price.last-good.json", JSON.stringify(out, null, 2));
+    console.log("✅ Updated price.last-good.json");
+  } else {
+    console.log("⚠️ Not updating price.last-good.json (one or more errors present).");
+  }
 }
 
 main().catch((e) => {
@@ -141,5 +150,6 @@ main().catch((e) => {
     },
   };
   try { fs.writeFileSync("price.json", JSON.stringify(fallback, null, 2)); } catch {}
+  // Intentionally *do not* touch price.last-good.json on fatal
   process.exit(1);
 });
