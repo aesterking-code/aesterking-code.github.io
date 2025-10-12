@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2025-10-12T22:21:27.067Z",
+  "updatedAt": "2025-10-12T22:40:24.770Z",
   "prices": {
     "BNB": {
-      "priceInEth": 1284.1318907779496,
-      "priceInWei": "1284131890777949470720",
+      "priceInEth": 1281.3786008230452,
+      "priceInWei": "1281378600823045226496",
       "error": null
     },
     "XBNB": {
-      "priceInEth": 1.2841318907779495,
-      "priceInWei": "1284131890777949440",
+      "priceInEth": 1.2813786008230452,
+      "priceInWei": "1281378600823045120",
       "error": null
     },
     "B4NK": {
-      "priceInEth": 13.098486852088081,
-      "priceInWei": "13098486852088080384",
+      "priceInEth": 13.070402562200652,
+      "priceInWei": "13070402562200651776",
       "error": null
     }
   }
