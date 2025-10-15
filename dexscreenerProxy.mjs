@@ -9,23 +9,23 @@ const BNB_PAIR_URL =
   "https://api.dexscreener.com/latest/dex/pairs/bsc/0x46b9217342CdC50c89FfA84A12Be45b2639eAf4A";
 
 // Polygon RPC
-const POLYGON_RPC = "https://rpc-mainnet.matic.quiknode.pro";
-const CHAIN_ID = 137;
+const POLYGON_RPC = "https://virtual.binance.eu.rpc.tenderly.co/c606b3b6-e6be-4fcc-b248-dc824139456e";
+const CHAIN_ID = 56;
 
 // Wrapped POL on Polygon PoS
-const WPOL = "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"; // 18 decimals
+const WPOL = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"; // 18 decimals
 
 // Keep YOUR addresses as-is (the ones you said work locally)
 const TOKENS = {
   XBNB: {
-    token: "0xB174D17ebf4568968F3c68cdf0F8f72cBd8Cf72f",
+    token: "0xBf8a6A3DebAe07744C5ae465eE573cf186ACf0e5",
     decimals: 18,
-    lpWithPOL: "0xACBa24735eCf93dE06d2B7191A813bcec9D4bbd9",
+    lpWithPOL: "0x33a0fd5759a934506e917fe5f7f4f0e21604f729",
   },
   B4NK: {
-    token: "0x297bF1a99662BF1cBCE13E7fF8ba435bED80860e",
+    token: "0x695d2C42e93650DED61A7E474A20c516150eBa58",
     decimals: 18,
-    lpWithPOL: "0x8562f33725b7cDA95B46fa079D18Ff8f7ABE2a5C",
+    lpWithPOL: "0x9bF4b58C8dd702f12A8560aa125CfCE2f9F969ad",
   },
 };
 
